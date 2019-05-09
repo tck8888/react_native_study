@@ -2,6 +2,7 @@ import {
     createStackNavigator,
     createMaterialTopTabNavigator,
     createBottomTabNavigator,
+    createAppContainer,
     createSwitchNavigator
 } from "react-navigation"
 import WelcomePage from '../page/WelcomePage'
@@ -32,11 +33,11 @@ const MainNavigator = createStackNavigator({
     }
 });
 
-export default createSwitchNavigator({
+export default createAppContainer(createSwitchNavigator({
     Init: InitNavigator,
     Main: MainNavigator,
 }, {
     navigationOptions: {
         header: null,
     }
-})
+}));

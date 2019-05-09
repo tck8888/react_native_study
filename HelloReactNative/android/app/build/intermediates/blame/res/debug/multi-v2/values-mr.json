@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\h5_project\\react_native_project\\HelloReactNative\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mr\\values-mr.xml",
+            "outputFile": "D:\\h5_project\\react_native_study\\HelloReactNative\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mr\\values-mr.xml",
             "map": [
                 {
                     "source": "C:\\Users\\tck\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\a9be0f6cccc155253a04449dc0b84fc8\\res\\values-mr\\values-mr.xml",
