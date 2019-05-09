@@ -11,3 +11,4 @@
 	4. react-native link react-native-gesture-handler
 # react-native-vector-icons使用
 	react-native link react-native-vector-icons
+#  console.disableYellowBox = true;去掉警告框
