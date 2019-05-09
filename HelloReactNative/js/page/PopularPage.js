@@ -1,16 +1,42 @@
-
-
 import React, {Component} from 'react';
 import {StyleSheet, Text, View,} from 'react-native';
 
 
+import {
+    createAppContainer,
+    createMaterialTopTabNavigator
+} from "react-navigation";
 
 type Props = {};
 export default class PopularPage extends Component<Props> {
     render() {
+        const TabNavigator = createAppContainer(createMaterialTopTabNavigator({
+            PopularTab1: {
+                screen: PopularTab,
+                navigationOptions: {
+                    title: "Tab1"
+                }
+            },
+            PopularTab2: {
+                screen: PopularTab,
+                navigationOptions: {
+                    title: "Tab2"
+                }
+            },
+        }));
+
+        return <View style={{flex: 1}}>
+            <TabNavigator/>
+        </View>
+    }
+}
+
+class PopularTab extends Component<Props> {
+    render() {
+        const {tabLabel} = this.props;
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>PopularPage</Text>
+                <Text style={styles.welcome}>{tabLabel}</Text>
 
             </View>
         );
