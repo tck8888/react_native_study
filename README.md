@@ -9,3 +9,5 @@
 	2. npm install --save react-navigation
 	3. npm install --save react-native-gesture-handler
 	4. react-native link react-native-gesture-handler
+# react-native-vector-icons使用
+	react-native link react-native-vector-icons
