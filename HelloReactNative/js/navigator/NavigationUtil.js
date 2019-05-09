@@ -9,7 +9,7 @@ export default class NavigationUtil {
      * @param page 要跳转的页面名
      **/
     static goPage(params, page) {
-        const navigation = NavigationUtil.navigation;
+        const navigation= NavigationUtil.navigation;
         if (!navigation) {
             console.log('NavigationUtil.navigation can not be null')
             return;

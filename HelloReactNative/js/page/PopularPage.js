@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View,} from 'react-native';
 
+import NavigationUtil from '../navigator/NavigationUtil'
 
 import {
     createAppContainer,
@@ -37,7 +38,9 @@ class PopularTab extends Component<Props> {
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>{tabLabel}</Text>
-
+                <Text onPress={() => {
+                    NavigationUtil.goPage({navigation: this.props.navigation}, "DetailPage")
+                }}>跳转详情页面</Text>
             </View>
         );
     }
