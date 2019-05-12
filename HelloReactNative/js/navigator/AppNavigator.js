@@ -18,6 +18,7 @@ import HomePage from '../page/HomePage'
 import DetailPage from '../page/DetailPage'
 import FetchDemoPage from '../page/FetchDemoPage'
 import AsyncStorageDemoPage from '../page/AsyncStorageDemoPage'
+import DataStoreDemoPage from '../page/DataStoreDemoPage'
 
 //根路由
 export const rootCom = "Init";
@@ -55,7 +56,12 @@ const MainNavigator = createStackNavigator({
         navigationOptions: {
             // header: null,
         }
-    }
+    }, DataStoreDemoPage: {
+        screen: DataStoreDemoPage,
+        navigationOptions: {
+            // header: null,
+        }
+    },
 });
 
 export const RootNavigator = createAppContainer(createSwitchNavigator({
