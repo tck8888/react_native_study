@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View,} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
 
 import NavigationUtil from '../navigator/NavigationUtil'
 
@@ -20,7 +20,7 @@ export default class PopularPage extends Component<Props> {
         const tabs = {};
         this.tabNames.forEach((item, index) => {
             tabs[`tab${index}`] = {
-                screen: props=><PopularTab {...props} tabLabel={item}/>,
+                screen: props => <PopularTab {...props} tabLabel={item}/>,
                 navigationOptions: {
                     title: item
                 }
@@ -33,14 +33,14 @@ export default class PopularPage extends Component<Props> {
         const TabNavigator = createAppContainer(createMaterialTopTabNavigator(
             this._genTabs(), {
                 tabBarOptions: {
-                    tabStyle:styles.tabStyle,
-                    upperCaseLabel:false,
-                    scrollEnabled:true,
-                    style:{
-                        backgroundColor:'#678'
+                    tabStyle: styles.tabStyle,
+                    upperCaseLabel: false,
+                    scrollEnabled: true,
+                    style: {
+                        backgroundColor: '#678'
                     },
-                    indicatorStyle:styles.indicatorStyle,
-                    labelStyle:styles.labelStyle
+                    indicatorStyle: styles.indicatorStyle,
+                    labelStyle: styles.labelStyle
                 }
             }
         ));
@@ -59,7 +59,19 @@ class PopularTab extends Component<Props> {
                 <Text style={styles.welcome}>{tabLabel}</Text>
                 <Text onPress={() => {
                     NavigationUtil.goPage({navigation: this.props.navigation}, "DetailPage")
-                }}>跳转详情页面</Text>
+                }}>跳转DetailPage</Text>
+
+                <Button
+                    title="Fetch使用"
+                    onPress={() => {
+                        NavigationUtil.goPage({navigation: this.props.navigation}, "FetchDemoPage")
+                    }}/>
+                <Button
+                    style={styles.btn}
+                    title="AsyncStorage使用"
+                    onPress={() => {
+                        NavigationUtil.goPage({navigation: this.props.navigation}, "AsyncStorageDemoPage")
+                    }}/>
             </View>
         );
     }
@@ -78,17 +90,20 @@ const styles = StyleSheet.create({
         margin: 10,
     },
 
-    tabStyle:{
-        minWidth:50
+    tabStyle: {
+        minWidth: 50
     },
 
-    indicatorStyle:{
-        height:2,
-        backgroundColor:'white'
+    indicatorStyle: {
+        height: 2,
+        backgroundColor: 'white'
     },
-    labelStyle:{
+    labelStyle: {
         fontSize: 13,
-        marginTop:6,
-        marginBottom:6
+        marginTop: 6,
+        marginBottom: 6
+    },
+    btn: {
+        marginTop: 50
     }
 });
