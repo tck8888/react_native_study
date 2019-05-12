@@ -4,6 +4,7 @@ import {
     createAppContainer,
     createBottomTabNavigator
 } from "react-navigation";
+import {connect} from 'react-redux';
 
 
 import {
@@ -67,27 +68,31 @@ const TABS = {//在这里配置路由的页面
     },
 }
 
-export default class DynamicTabNavigator extends Component<Props> {
+class DynamicTabNavigator extends Component<Props> {
     constructor(pros) {
         super(pros)
         console.disableYellowBox = true;
     }
 
     _tabNavigator() {
+        if (this.Tabs) {
+            return this.Tabs;
+        }
         const {PopularPage, TrendingPage, FavoritePage, MyPage} = TABS;
         PopularPage.navigationOptions.tabBarLabel = '最热';//动态配置tab属性
         const tabs = {
             PopularPage, TrendingPage, FavoritePage, MyPage
         };
-        return createAppContainer(createBottomTabNavigator(
+        return this.Tabs = createAppContainer(createBottomTabNavigator(
             tabs, {
-                tabBarComponent: TabBarComponent
+                tabBarComponent: props => {
+                    return <TabBarComponent theme={this.props.theme} {...props}/>
+                }
             }
         ));
     }
 
     render() {
-        //NavigationUtil.navigation = this.props.navigation;
         const Tab = this._tabNavigator();
         return <Tab/>
     }
@@ -103,16 +108,15 @@ class TabBarComponent extends React.Component {
     }
 
     render() {
-        const {routes,index} = this.props.navigation.state;
-        if (routes[index].params){
-            const {theme} =routes[index].params;
-            //已更新时间为主，防止被其他tab之前的修改覆盖掉
-            if (theme && theme.updateTime > this.theme.updateTime) {
-                this.theme = theme;
-            }
-        }
+
         return <BottomTabBar {...this.props}
-                             activeTintColor={this.theme.tintColor || this.props.activeTintColor}
+                             activeTintColor={this.props.theme}
         />
     }
 }
+
+const mapStateTopProps = state => ({
+    theme: state.theme.theme,
+});
+
+export default connect(mapStateTopProps)(DynamicTabNavigator);
